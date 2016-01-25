@@ -11,12 +11,13 @@ PAYMENTS_ENDPOINT = '/{version}/payments/'.format(version=app.config['API_VERSIO
 
 
 def build_query_dict(request):
-    q_dict = { 'query': {
-        'bool': {
-            'must': [],
-            'filter': [],
+    q_dict = {
+        'query': {
+            'bool': { 'must': [], 'filter': [], } },
+        'aggs': {
+            'Towns': { 'terms' : { 'field' : 'town', 'size': 5 } }
         }
-    }}
+    }
     m = q_dict['query']['bool']['must']
     f = q_dict['query']['bool']['filter']
     
