@@ -15,7 +15,10 @@ def build_query_dict(request):
         'query': {
             'bool': { 'must': [], 'filter': [], } },
         'aggs': {
-            'Towns': { 'terms' : { 'field' : 'town', 'size': 5 } }
+            'Towns': { 'terms' : { 'field' : 'town', 'size': 5 } },
+            'Countries': { 'terms' : { 'field' : 'country', 'size': 5 } },
+            'Years': { 'terms' : { 'field' : 'year', 'size': 5 } },
+            'Sub Payments Type': { 'terms' : { 'field' : 'sub_payments_euro.name', 'size': 5 } }
         }
     }
     m = q_dict['query']['bool']['must']
@@ -40,6 +43,18 @@ def build_query_dict(request):
     town = request.args.get('town', '')
     if town != '':
         f.append({ 'term': { 'town': str(town).lower() }})
+    
+    year = request.args.get('year', '')
+    if year != '':
+        f.append({ 'term': { 'year': int(year) }})
+    
+    amount_euro_gte = request.args.get('amount_euro_gte', '')
+    if amount_euro_gte:
+        f.append({ 'range': { 'amount_euro': { 'gte': float(amount_euro_gte) } }})
+    
+    sub_payments_type = request.args.get('sub_payments_type', '')
+    if sub_payments_type != '':
+        f.append({ 'term': { 'sub_payments_euro.name': str(sub_payments_type) }})
     
     return q_dict
     
