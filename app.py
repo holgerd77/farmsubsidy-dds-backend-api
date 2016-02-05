@@ -12,6 +12,7 @@ PAYMENTS_ENDPOINT = '/{version}/payments/'.format(version=app.config['API_VERSIO
 
 def build_query_dict(request):
     q_dict = {
+        'sort': [ { 'amount_euro': 'desc' } ],
         'query': {
             'bool': { 'must': [], 'filter': [], } },
         'aggs': {
