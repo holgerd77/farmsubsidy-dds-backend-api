@@ -1,18 +1,20 @@
 import json, requests
 from flask import Flask, jsonify, make_response, request
+from flask.ext.cors import CORS
 
 import default_settings
 
 
 app = Flask(__name__)
 app.config.from_object(default_settings)
+cors = CORS(app)
 
 PAYMENTS_ENDPOINT = '/{version}/payments/'.format(version=app.config['API_VERSION'])
 
 
 def build_query_dict(request):
     q_dict = {
-        'sort': [ { 'amount_euro': 'desc' } ],
+        #'sort': [ { 'amount_euro': 'desc' } ],
         'query': {
             'bool': { 'must': [], 'filter': [], } },
         'aggs': {
@@ -43,7 +45,7 @@ def build_query_dict(request):
     
     town = request.args.get('town', '')
     if town != '':
-        f.append({ 'term': { 'town': str(town).lower() }})
+        f.append({ 'term': { 'town': str(town) }})
     
     year = request.args.get('year', '')
     if year != '':
@@ -67,7 +69,7 @@ def index():
     payload = { 'source': json.dumps(q_dict), 'pretty': '' }
     r = requests.get(app.config['ELASTIC_URL'] + '_search', params=payload)
     if True or r.status_code == 200:
-        return r.content
+        return make_response(r.content, r.status_code)
     else:
         e_dict = { 'error': { 'msg': 'An error occured', 'code': r.status_code } }
         return make_response(jsonify(e_dict), r.status_code)
