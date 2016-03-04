@@ -1,18 +1,26 @@
 {
+    "BG": {
+        "name": "Bulgaria",
+        "agency_name": "dfz.bg - State Fund Agriculture",
+        "info_url": "http://www.dfz.bg",
+        "data_url": "http://iacs-online.dfz.bg/apex/f?p=100:1:3291744435169433",
+        "nc_symbol": "BGN",
+        "nc_sign": "\u043b\u0432"
+    },
     "GB": {
-        "name": "Great Britain", 
-        "agency_name": "GOV.UK - Department for Environment, Food and Rural Affairs", 
-        "info_url": "https://www.gov.uk/government/organisations/department-for-environment-food-rural-affairs", 
-        "data_url": "http://cap-payments.defra.gov.uk/", 
-        "nc_symbol": "GBP", 
+        "name": "Great Britain",
+        "agency_name": "GOV.UK - Department for Environment, Food and Rural Affairs",
+        "info_url": "https://www.gov.uk/government/organisations/department-for-environment-food-rural-affairs",
+        "data_url": "http://cap-payments.defra.gov.uk/",
+        "nc_symbol": "GBP",
         "nc_sign": "\u00a3"
-    }, 
+    },
     "IE": {
-        "name": "Ireland", 
-        "agency_name": "gov.ie - Department of Agriculture, Food and the Marine", 
-        "info_url": "http://www.agriculture.gov.ie", 
-        "data_url": "http://www.agriculture.gov.ie/agri-foodindustry/euinternationalpolicy/commonagriculturalpolicycap/capbeneficiariesdatabase/paymentsdatabase/cap_ben_master.jsp", 
-        "nc_symbol": "", 
+        "name": "Ireland",
+        "agency_name": "gov.ie - Department of Agriculture, Food and the Marine",
+        "info_url": "http://www.agriculture.gov.ie",
+        "data_url": "http://www.agriculture.gov.ie/agri-foodindustry/euinternationalpolicy/commonagriculturalpolicycap/capbeneficiariesdatabase/paymentsdatabase/cap_ben_master.jsp",
+        "nc_symbol": "",
         "nc_sign": ""
     }
 }
