@@ -1,7 +1,7 @@
-# farmsubsidy-dds-backend-api
+# openfarmsubsidies-backend-api
 
-Backend/API to Elasticsearch index for ``farmsubsidy-dds``.
+Backend/API to Elasticsearch index for ``openfarmsubsidies``.
 
 Documentation for this and associated repositories can be found at:
 
-* http://farmsubsidy-dds.readthedocs.org
+* http://openfarmsubsidies.readthedocs.org
