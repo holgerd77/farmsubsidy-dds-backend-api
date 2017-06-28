@@ -3,7 +3,7 @@ from flask import Flask, jsonify, make_response, request
 from flask.ext.cors import CORS
 
 import default_settings
-
+ 
 
 app = Flask(__name__)
 app.config.from_object(default_settings)
