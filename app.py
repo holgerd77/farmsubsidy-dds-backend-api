@@ -85,7 +85,7 @@ def payments():
 
 
 @app.route(PAYMENTS_COUNT, methods=['GET',])
-def payments_count:
+def payments_count():
     r = requests.get(app.config['ELASTIC_URL'] + '_count', params={})
     if r.status_code == 200:
         return make_response(r.content, r.status_code)
