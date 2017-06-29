@@ -10,6 +10,7 @@ app.config.from_object(default_settings)
 cors = CORS(app)
 
 PAYMENTS_ENDPOINT = '/{version}/payments/'.format(version=app.config['API_VERSION'])
+PAYMENTS_COUNT = '/{version}/payments_count/'.format(version=app.config['API_VERSION'])
 COUNTRIES_ENDPOINT = '/{version}/countries/'.format(version=app.config['API_VERSION'])
 
 
@@ -76,7 +77,17 @@ def payments():
         payload['size'] = size;
     
     r = requests.get(app.config['ELASTIC_URL'] + '_search', params=payload)
-    if True or r.status_code == 200:
+    if r.status_code == 200:
+        return make_response(r.content, r.status_code)
+    else:
+        e_dict = { 'error': { 'msg': 'An error occured', 'code': r.status_code } }
+        return make_response(jsonify(e_dict), r.status_code)
+
+
+@app.route(PAYMENTS_COUNT, methods=['GET',])
+def payments_count:
+    r = requests.get(app.config['ELASTIC_URL'] + '_count', params={})
+    if r.status_code == 200:
         return make_response(r.content, r.status_code)
     else:
         e_dict = { 'error': { 'msg': 'An error occured', 'code': r.status_code } }
